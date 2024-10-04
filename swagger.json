@@ -1,0 +1,1933 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Bluebees API Documentation",
+    "version": "1.0.0"
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    },
+    "bearerAuth": {
+      "type": "apiKey",
+      "name": "accesstoken",
+      "scheme": "bearer",
+      "in": "header",
+      "description": "JWT Authorization header"
+    }
+  },
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Common",
+      "description": "Common routes"
+    },
+    {
+      "name": "User",
+      "description": "User routes"
+    },
+    {
+      "name": "FAQ",
+      "description": "Frequently Asked Questions routes"
+    },
+    {
+      "name": "Partners",
+      "description": "Partners routes"
+    },
+    {
+      "name": "Contact",
+      "description": "Contact routes"
+    },
+    {
+      "name": "Support",
+      "description": "Support routes"
+    },
+    {
+      "name": "Aboutus",
+      "description": "About Us routes"
+    },
+    {
+      "name": "Interest",
+      "description": "Interest routes"
+    },
+    {
+      "name": "Blog",
+      "description": "Blog routes"
+    }
+  ],
+  "schemes": ["http", "https"],
+  "consumes": [
+    "application/json",
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
+  ],
+  "produces": ["application/json"],
+  "paths": {
+    "/common/upload-single": {
+      "post": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Common"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "singleFile",
+            "in": "formData",
+            "description": "Single file to be uploaded",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/user/login": {
+      "post": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["User"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "phoneNumber",
+            "in": "formData",
+            "description": "Login with phone number",
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "formData",
+            "description": "Login with Username & Password",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "type": "password"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/user/admin_login": {
+      "post": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["User"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/user/logout": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["User"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/user/register": {
+      "post": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["User"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "phoneNumber",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "role",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/user/getAll": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["User"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/user/update": {
+      "put": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["User"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "update",
+            "in": "formData",
+            "type": "object",
+            "description": "input field you want to update",
+            "schema": {
+              "type": "object",
+              "example": {
+                "email": "newemail@gmail.com"
+              },
+              "required": true
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/user/update/password": {
+      "put": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["User"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "currentPassword",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "newPassword",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/faq/create": {
+      "post": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["FAQ"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "question",
+            "in": "formData",
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "example": {
+                "en": "english",
+                "ar": "arabic"
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "answer",
+            "in": "formData",
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "example": {
+                "en": "english",
+                "ar": "arabic"
+              }
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/faq/getAll": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["FAQ"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "10"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "type": "string",
+            "description": "input the variable want to sort with",
+            "schema": {
+              "type": "string",
+              "example": "-_id"
+            }
+          },
+          {
+            "name": "searchEn",
+            "in": "query",
+            "type": "string",
+            "description": "english search"
+          },
+          {
+            "name": "searchAr",
+            "in": "query",
+            "type": "string",
+            "description": "arabic search"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/faq/getById": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["FAQ"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "65bfbf91a492808bc0903e8d"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/faq/update": {
+      "put": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["FAQ"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "update",
+            "in": "formData",
+            "type": "object",
+            "description": "input field you want to update",
+            "schema": {
+              "type": "object",
+              "example": {
+                "field": "new data"
+              },
+              "required": true
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/faq/delete": {
+      "delete": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["FAQ"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/partners/create": {
+      "post": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Partners"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "title",
+            "in": "formData",
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "example": {
+                "en": "english",
+                "ar": "arabic"
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "link",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/partners/getAll": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Partners"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "10"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "type": "string",
+            "description": "input the variable want to sort with",
+            "schema": {
+              "type": "string",
+              "example": "-_id"
+            }
+          },
+          {
+            "name": "searchEn",
+            "in": "query",
+            "type": "string",
+            "description": "english search"
+          },
+          {
+            "name": "searchAr",
+            "in": "query",
+            "type": "string",
+            "description": "arabic search"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/partners/getById": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Partners"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "65bfbf91a492808bc0903e8d"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/partners/update": {
+      "put": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Partners"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "update",
+            "in": "formData",
+            "type": "object",
+            "description": "input field you want to update",
+            "schema": {
+              "type": "object",
+              "example": {
+                "field": "new data"
+              },
+              "required": true
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/partners/delete": {
+      "delete": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Partners"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/contact/create": {
+      "post": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Contact"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "update",
+            "in": "formData",
+            "type": "object",
+            "description": "input field you want to update",
+            "schema": {
+              "type": "object",
+              "example": {
+                "field": "new data"
+              },
+              "required": true
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/contact/get": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Contact"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/support/create": {
+      "post": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Support"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "phoneNumber",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "section",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "subject",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "message",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/support/getAll": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Support"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "10"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "type": "string",
+            "description": "input the variable want to sort with",
+            "schema": {
+              "type": "string",
+              "example": "-_id"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/support/getById": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Support"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "65bfbf91a492808bc0903e8d"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/support/update": {
+      "put": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Support"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "update",
+            "in": "formData",
+            "type": "object",
+            "description": "input field you want to update",
+            "schema": {
+              "type": "object",
+              "example": {
+                "field": "new data"
+              },
+              "required": true
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/support/delete": {
+      "delete": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Support"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/aboutus/info/create": {
+      "post": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Aboutus"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "update",
+            "in": "formData",
+            "type": "object",
+            "description": "input field you want to update",
+            "schema": {
+              "type": "object",
+              "example": {
+                "field": "new data"
+              },
+              "required": true
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/aboutus/info/get": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Aboutus"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/aboutus/member/create": {
+      "post": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Aboutus"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "example": {
+                "en": "english",
+                "ar": "arabic"
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "designation",
+            "in": "formData",
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "example": {
+                "en": "english",
+                "ar": "arabic"
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "info",
+            "in": "formData",
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "example": {
+                "en": "english",
+                "ar": "arabic"
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/aboutus/member/getAll": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Aboutus"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "10"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "type": "string",
+            "description": "input the variable want to sort with",
+            "schema": {
+              "type": "string",
+              "example": "-_id"
+            }
+          },
+          {
+            "name": "searchAr",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "searchEn",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/aboutus/member/getById": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Aboutus"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "65bfbf91a492808bc0903e8d"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/aboutus/member/update": {
+      "put": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Aboutus"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "update",
+            "in": "formData",
+            "type": "object",
+            "description": "input field you want to update",
+            "schema": {
+              "type": "object",
+              "example": {
+                "field": "new data"
+              },
+              "required": true
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/aboutus/member/delete": {
+      "delete": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Aboutus"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/interest/create": {
+      "post": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Interest"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "title",
+            "in": "formData",
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "example": {
+                "en": "english",
+                "ar": "arabic"
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "type": "string",
+            "description": "Icon String",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/interest/getAll": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Interest"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "10"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "type": "string",
+            "description": "input the variable want to sort with",
+            "schema": {
+              "type": "string",
+              "example": "-_id"
+            }
+          },
+          {
+            "name": "searchAr",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "searchEn",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/interest/getById": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Interest"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "65bfbf91a492808bc0903e8d"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/interest/update": {
+      "put": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Interest"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "update",
+            "in": "formData",
+            "type": "object",
+            "description": "input field you want to update",
+            "schema": {
+              "type": "object",
+              "example": {
+                "field": "new data"
+              },
+              "required": true
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/interest/delete": {
+      "delete": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Interest"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/blog/create": {
+      "post": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Blog"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "publisherId",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "in": "formData",
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "example": {
+                "en": "english",
+                "ar": "arabic"
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "content",
+            "in": "formData",
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "example": {
+                "en": "english",
+                "ar": "arabic"
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "interests",
+            "in": "formData",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "interestId": {
+                  "type": "string",
+                  "example": "123456789"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/blog/getAll": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Blog"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "10"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "type": "string",
+            "description": "input the variable want to sort with",
+            "schema": {
+              "type": "string",
+              "example": "-_id"
+            }
+          },
+          {
+            "name": "featured",
+            "in": "query",
+            "type": "boolean",
+            "description": "for featured blogs set this true"
+          },
+          {
+            "name": "searchAr",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "searchEn",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/blog/getById": {
+      "get": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Blog"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "schema": {
+              "type": "string",
+              "example": "65bfbf91a492808bc0903e8d"
+            },
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/blog/update": {
+      "put": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Blog"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "update",
+            "in": "formData",
+            "type": "object",
+            "description": "input field you want to update",
+            "schema": {
+              "type": "object",
+              "example": {
+                "field": "new data"
+              },
+              "required": true
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/blog/delete": {
+      "delete": {
+        "deprecated": false,
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "tags": ["Blog"],
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "failure"
+          }
+        },
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  }
+}
